@@ -186,13 +186,17 @@ INSERT INTO Transaction (TransactionID, Date, Quantity, Amount, UserID) VALUES
 
 -- Buy table (Specialization of Transaction)
 INSERT INTO Buy (TransactionID) VALUES 
-(1001),
-(1002),
-(1003),
-(1004),
-(1005),
-(1006),
-(1007),
-(1008),
-(1009),
-(1010);
+(1001),(1002),(1003),(1004),(1005),(1006),(1007),(1008),(1009),(1010);
+
+CREATE VIEW PortfolioSummary AS
+SELECT p.PortfolioID, p.Name AS PortfolioName, SUM(s.AmountInvested) AS TotalInvestedAmount,
+SUM(s.CurrentPrice * s.Quantity) AS CurrentPortfolioValue
+FROM Portfolio p JOIN Portfolio_Stock ps ON p.PortfolioID = ps.PortfolioID
+JOIN Stock s ON ps.StockID = s.StockID
+GROUP BY p.PortfolioID, p.Name;
+
+
+CREATE VIEW UserSummary AS
+SELECT u.userid, u.contactinfo, u.name, d.accountno, d.balance, d.panid, a.emailaddress
+FROM user u JOIN demataccount d ON u.userid=d.userid 
+JOIN authorizationcredentials a ON u.userid=a.userid;
