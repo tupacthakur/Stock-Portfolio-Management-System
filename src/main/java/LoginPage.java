@@ -104,7 +104,6 @@ public class LoginPage extends javax.swing.JFrame {
         jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1024, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1024, 768));
 
@@ -117,7 +116,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(193, 219, 249));
 
-        jLabel3.setFont(new java.awt.Font("Unispace", 1, 48)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Agency FB", 1, 80)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(16, 48, 144));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Stock Portfolio Management System");
@@ -131,8 +130,8 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 16, Short.MAX_VALUE))
         );
 
         jButton4.setBackground(new java.awt.Color(193, 219, 249));
@@ -164,7 +163,7 @@ public class LoginPage extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
+                .addGap(87, 87, 87)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -198,7 +197,7 @@ public class LoginPage extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -242,5 +241,5 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-  
+
 }
