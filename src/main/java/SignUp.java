@@ -260,6 +260,10 @@ public class SignUp extends javax.swing.JFrame {
             System.out.println(e);
         }
 
+        CreateDemat createdemat = new CreateDemat();
+        createdemat.setVisible(true);
+        setVisible(false);
+
     }// GEN-LAST:event_signupbuttonActionPerformed
 
     private void EmailFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_EmailFieldActionPerformed
