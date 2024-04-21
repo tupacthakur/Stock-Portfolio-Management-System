@@ -185,14 +185,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" pref="139" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton5" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="jButton4" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="253" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="304" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -260,6 +260,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="I&apos;m an existing user (Sign-In)"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
@@ -274,6 +277,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="I&apos;m a new user (Sign-Up)"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -3,7 +3,7 @@ use StockPortfolioManagement;
 
 -- User table
 CREATE TABLE User (
-    UserID INT PRIMARY KEY,
+    UserID INT auto_increment key,
     ContactInfo VARCHAR(100),
     Name VARCHAR(100)
 );
@@ -200,3 +200,5 @@ CREATE VIEW UserSummary AS
 SELECT u.userid, u.contactinfo, u.name, d.accountno, d.balance, d.panid, a.emailaddress
 FROM user u JOIN demataccount d ON u.userid=d.userid 
 JOIN authorizationcredentials a ON u.userid=a.userid;
+
+insert into user (contactinfo,name) values ("uday@gmail.com","uday");

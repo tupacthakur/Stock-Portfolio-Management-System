@@ -88,7 +88,7 @@ public class SignIn extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Agency FB", 1, 52)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(16, 48, 144));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel6.setText("Password:");
 
         jLabel7.setFont(new java.awt.Font("Agency FB", 1, 52)); // NOI18N
@@ -99,8 +99,8 @@ public class SignIn extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Agency FB", 1, 52)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(16, 48, 144));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Username:");
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel8.setText("Email:");
 
         jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(16, 48, 144));
