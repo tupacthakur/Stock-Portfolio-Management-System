@@ -3,17 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.sql.*;
 /**
  *
  * @author udayj
  */
 public class SignIn extends javax.swing.JFrame {
 
+    Connection con = null;
+    ResultSet rs = null;
+    PreparedStatement ps = null;
     /**
      * Creates new form SignIn
      */
     public SignIn() {
         initComponents();
+        con = DB.mycon();
     }
 
     /**
@@ -34,9 +39,9 @@ public class SignIn extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        passfield = new javax.swing.JPasswordField();
+        emailfield = new javax.swing.JTextField();
+        signinbutton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,38 +107,36 @@ public class SignIn extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel8.setText("Email:");
 
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(16, 48, 144));
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(16, 48, 144), null));
-        jPasswordField1.setInheritsPopupMenu(true);
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        passfield.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        passfield.setForeground(new java.awt.Color(16, 48, 144));
+        passfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        passfield.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(16, 48, 144), null));
+        passfield.setInheritsPopupMenu(true);
+        passfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                passfieldActionPerformed(evt);
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(16, 48, 144));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("jTextField1");
-        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(16, 48, 144), null));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        emailfield.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        emailfield.setForeground(new java.awt.Color(16, 48, 144));
+        emailfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        emailfield.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(16, 48, 144), null));
+        emailfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                emailfieldActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(193, 219, 249));
-        jButton1.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(16, 48, 144));
-        jButton1.setText("Sign-In");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(16, 48, 144), null));
-        jButton1.setDefaultCapable(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        signinbutton.setBackground(new java.awt.Color(193, 219, 249));
+        signinbutton.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
+        signinbutton.setForeground(new java.awt.Color(16, 48, 144));
+        signinbutton.setText("Sign-In");
+        signinbutton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(16, 48, 144), null));
+        signinbutton.setDefaultCapable(false);
+        signinbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                signinbuttonActionPerformed(evt);
             }
         });
 
@@ -152,11 +155,11 @@ public class SignIn extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
+                            .addComponent(passfield, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                            .addComponent(emailfield)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(437, 437, 437)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(signinbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(267, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -167,14 +170,14 @@ public class SignIn extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailfield, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passfield, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(signinbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(110, Short.MAX_VALUE))
         );
 
@@ -192,17 +195,37 @@ public class SignIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void passfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_passfieldActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void emailfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_emailfieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void signinbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signinbuttonActionPerformed
+        String pass = String.valueOf(passfield.getPassword());
+        String email = emailfield.getText();
+        boolean authorized=false;
+        try {
+            String query="select * from authorizationcredentials where emailaddress=? and password=?";
+            ps=con.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            rs=ps.executeQuery();
+            if(rs.next())
+            {
+                System.out.println("found");
+                authorized=true;
+            }
+            else{
+                authorized=false;
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_signinbuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,7 +263,7 @@ public class SignIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField emailfield;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -250,7 +273,7 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField passfield;
+    private javax.swing.JButton signinbutton;
     // End of variables declaration//GEN-END:variables
 }
