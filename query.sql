@@ -25,32 +25,30 @@ CREATE TABLE DematAccount (
     FOREIGN KEY (UserID) REFERENCES User(UserID)
 );
 
--- Portfolio table
-CREATE TABLE Portfolio (
-    PortfolioID INT PRIMARY KEY,
-    UserID INT,
-    DematID INT,
-    FOREIGN KEY (UserID) REFERENCES User(UserID),
-    FOREIGN KEY (DEMATID) REFERENCES DematAccount(accountno),
-    PortfolioValue INT
-);
 
 -- Stock table
 CREATE TABLE Stock (
     StockID INT PRIMARY KEY,
     StockName VARCHAR(100) PRIMARY KEY,
-    CurrentPrice INT,
+    StockPrice INT,
     ChangePercentage INT
 );
 
--- Portfolio_Stock table for one-to-many relation between Portfolio and Stock
-CREATE TABLE Portfolio_Stock (
-    PortfolioID INT,
+
+-- Portfolio table
+CREATE TABLE Portfolio (
+    PortfolioID INT PRIMARY KEY,
+    UserID INT,
+    DematID INT,
     StockID INT,
     StockName varchar(100),
-    FOREIGN KEY (PortfolioID) REFERENCES Portfolio(PortfolioID),
+    StockPrice INT,
+    FOREIGN KEY (UserID) REFERENCES User(UserID),
+    FOREIGN KEY (DEMATID) REFERENCES DematAccount(accountno),
     FOREIGN KEY (StockID) REFERENCES Stock(StockID)
 );
+
+
 
 
 
