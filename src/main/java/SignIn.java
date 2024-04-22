@@ -13,6 +13,7 @@ public class SignIn extends javax.swing.JFrame {
     Connection con = null;
     ResultSet rs = null;
     PreparedStatement ps = null;
+    int id;
     /**
      * Creates new form SignIn
      */
@@ -224,6 +225,28 @@ public class SignIn extends javax.swing.JFrame {
 
         } catch (Exception e) {
             System.out.println(e);
+        }
+        try {
+            String query2 = "select userid from user where ContactInfo=?";
+            ps = con.prepareStatement(query2);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt(1); 
+                System.out.println(id);
+            } else {
+
+                System.out.println("No user found with the given name.");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        if(authorized)
+        {
+            HomePage homepage = new HomePage(id);
+            homepage.setVisible(true);
+            setVisible(false);
         }
     }//GEN-LAST:event_signinbuttonActionPerformed
 

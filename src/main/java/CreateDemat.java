@@ -218,22 +218,27 @@ public class CreateDemat extends javax.swing.JFrame {
     }//GEN-LAST:event_panidfieldActionPerformed
 
     private void createdematbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createdematbuttonActionPerformed
-        String dematid = dematidfield.getText();
+        int dematid = Integer.parseInt(dematidfield.getText());
         String panid = panidfield.getText();
         int balance = Integer.parseInt(balancefield.getText());
 
         try {
             String query="insert into demataccount values (?,?,?,?)";
             ps=con.prepareStatement(query);
-            ps.setString(1, dematid);
+            ps.setInt(1, dematid);
             ps.setInt(2, balance);
             ps.setString(3, panid);
             ps.setInt(4,id);
             int rows=ps.executeUpdate();
             System.out.println(rows);
+
         } catch (Exception e) {
             System.out.println(e);
         }
+        HomePage homepage = new HomePage(id);
+        homepage.setVisible(true);
+        setVisible(false);
+        
     }//GEN-LAST:event_createdematbuttonActionPerformed
 
     /**

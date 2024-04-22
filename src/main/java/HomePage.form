@@ -131,7 +131,7 @@
                       <Component id="jLabel10" min="-2" pref="241" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" alignment="1" min="-2" pref="76" max="-2" attributes="0"/>
+                          <Component id="useridDisplay" alignment="1" min="-2" pref="76" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="1" min="-2" pref="76" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
@@ -158,7 +158,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" pref="33" max="-2" attributes="0"/>
+                                  <Component id="useridDisplay" min="-2" pref="33" max="-2" attributes="0"/>
                                   <Component id="jLabel2" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -170,7 +170,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="useridDisplay">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Agency FB" size="24" style="1"/>
