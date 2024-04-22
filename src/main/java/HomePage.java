@@ -24,19 +24,28 @@ public class HomePage extends javax.swing.JFrame {
      PreparedStatement ps = null;
  
      int id;
-     
+     String name;
+     String email;
+     int balance;
+
      public HomePage() {
         initComponents();
         con = DB.mycon();
         populatePortfolioTable();
     }
 
-    public HomePage(int id) {
+    public HomePage(int id, String name, String email, int balance) {
         initComponents();
         con = DB.mycon();
         this.id = id;
         useridDisplay.setText("User ID: " + String.valueOf(id));
         populatePortfolioTable();
+        this.name=name;
+        Namedisplay.setText("Name: "+name);
+        this.email=email;
+        emaildisplay.setText("Email: "+email);
+        this.balance=balance;
+        balancedisplay.setText("Balance: "+String.valueOf(balance));
     }
 
     private void populatePortfolioTable() {
@@ -99,9 +108,9 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         useridDisplay = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        emaildisplay = new javax.swing.JLabel();
+        Namedisplay = new javax.swing.JLabel();
+        balancedisplay = new javax.swing.JLabel();
         PortfolioBtn = new javax.swing.JButton();
         StocksBtn = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -135,17 +144,17 @@ public class HomePage extends javax.swing.JFrame {
         useridDisplay.setForeground(new java.awt.Color(16, 48, 144));
         useridDisplay.setText("User ID");
 
-        jLabel2.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(16, 48, 144));
-        jLabel2.setText("Portfolio Value:");
+        emaildisplay.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
+        emaildisplay.setForeground(new java.awt.Color(16, 48, 144));
+        emaildisplay.setText("Email:");
 
-        jLabel3.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(16, 48, 144));
-        jLabel3.setText("Name");
+        Namedisplay.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
+        Namedisplay.setForeground(new java.awt.Color(16, 48, 144));
+        Namedisplay.setText("Name");
 
-        jLabel5.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(16, 48, 144));
-        jLabel5.setText("Account Balance:");
+        balancedisplay.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
+        balancedisplay.setForeground(new java.awt.Color(16, 48, 144));
+        balancedisplay.setText(" Balance:");
 
         PortfolioBtn.setBackground(new java.awt.Color(137, 182, 242));
         PortfolioBtn.setFont(new java.awt.Font("Agency FB", 1, 48)); // NOI18N
@@ -179,19 +188,19 @@ public class HomePage extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(PortfolioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(StocksBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Namedisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                    .addComponent(emaildisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(useridDisplay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(92, 92, 92))
+                    .addComponent(useridDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(balancedisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,12 +212,12 @@ public class HomePage extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 6, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Namedisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(balancedisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(useridDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emaildisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(useridDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -261,7 +270,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(stockidfield, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,7 +307,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,7 +348,18 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_StocksBtnActionPerformed
 
     private void SellBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SellBtnActionPerformed
-        // TODO add your handling code here:
+        int stockid=Integer.parseInt(stockidfield.getText());
+        try {
+            String query="delete from portfolio where userid=? and stockid=?";
+            ps=con.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.setInt(2,stockid);
+            int rows=ps.executeUpdate();
+            System.out.println(rows);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
     }//GEN-LAST:event_SellBtnActionPerformed
 
     private void stockidfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockidfieldActionPerformed
@@ -385,17 +405,17 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Namedisplay;
     private javax.swing.JButton PortfolioBtn;
     private javax.swing.JTable PortfolioTable;
     private javax.swing.JButton SellBtn;
     private javax.swing.JButton StocksBtn;
+    private javax.swing.JLabel balancedisplay;
+    private javax.swing.JLabel emaildisplay;
     private javax.swing.JButton jButton2;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

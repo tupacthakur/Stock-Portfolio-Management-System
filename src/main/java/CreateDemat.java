@@ -21,6 +21,8 @@ public class CreateDemat extends javax.swing.JFrame {
     PreparedStatement ps = null;
 
     int id;
+    String name;
+    String email;
 
     public CreateDemat() {
         initComponents();
@@ -235,7 +237,41 @@ public class CreateDemat extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
-        HomePage homepage = new HomePage(id);
+        
+
+        try {
+            String query3 = "select name from user where userid=?";
+            ps = con.prepareStatement(query3);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                name = rs.getString(1); 
+                System.out.println(name);
+            } else {
+
+                System.out.println("No user found with the given name.");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            String query3 = "select ContactInfo from user where userid=?";
+            ps = con.prepareStatement(query3);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                email = rs.getString(1); 
+                System.out.println(email);
+            } else {
+
+                System.out.println("No user found with the given name.");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        HomePage homepage = new HomePage(id,name,email,balance);
         homepage.setVisible(true);
         setVisible(false);
         

@@ -16,6 +16,8 @@ public class SignIn extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement ps = null;
     int id;
+    String name;
+    int balance;
     /**
      * Creates new form SignIn
      */
@@ -244,9 +246,42 @@ public class SignIn extends javax.swing.JFrame {
             System.out.println(e);
         }
 
+        try {
+            String query3 = "select name from user where ContactInfo=?";
+            ps = con.prepareStatement(query3);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                name = rs.getString(1); 
+                System.out.println(name);
+            } else {
+
+                System.out.println("No user found with the given name.");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            String query4 = "select balance from demataccount where userid=?";
+            ps = con.prepareStatement(query4);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                balance = rs.getInt(1); 
+                System.out.println(balance);
+            } else {
+
+                System.out.println("No user found with the given name.");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+
         if(authorized)
         {
-            HomePage homepage = new HomePage(id);
+            HomePage homepage = new HomePage(id, name, email, balance);
             homepage.setVisible(true);
             setVisible(false);
         }
@@ -254,6 +289,7 @@ public class SignIn extends javax.swing.JFrame {
             wrong wrong = new wrong();
             wrong.setVisible(true);
         }
+
     }//GEN-LAST:event_signinbuttonActionPerformed
 
     /**
