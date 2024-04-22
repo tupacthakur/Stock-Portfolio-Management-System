@@ -1,3 +1,5 @@
+package StockPortfolioManagement;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -24,6 +26,9 @@ public class StocksPage extends javax.swing.JFrame {
      String name;
      String email;
      int balance;
+     int dematid;
+    String stockname;
+     int stockprice;
 
     public StocksPage() {
         initComponents();
@@ -323,11 +328,57 @@ public class StocksPage extends javax.swing.JFrame {
     }//GEN-LAST:event_stockidfieldActionPerformed
 
     private void BuyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyBtnActionPerformed
-        // TODO add your handling code here:
+        int stockid=Integer.parseInt(stockidfield.getText());
+        
+        try {
+            String query="select AccountNo from demataccount where userid=?";
+            ps=con.prepareStatement(query);
+            ps.setInt(1, id);
+            rs=ps.executeQuery();
+            if(rs.next())
+            {
+                dematid=rs.getInt(1);
+            }
+            else{
+                System.out.println("not found");
+            }
+
+        try {
+            String query2="select stockname, stockprice from stock where stockid=?";
+            ps=con.prepareStatement(query2);
+            ps.setInt(1, stockid);
+            rs=ps.executeQuery();
+            if(rs.next())
+            {
+                stockname=rs.getString(1);
+                stockprice=rs.getInt(2);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            String query3="insert into portfolio (userid, dematid, stockid, stockname, stockprice) values (?,?,?,?,?)";
+            ps=con.prepareStatement(query3);
+            ps.setInt(1, id);
+            ps.setInt(2, dematid);
+            ps.setInt(3, stockid);
+            ps.setString(4, stockname);
+            ps.setInt(5, stockprice);
+            int rows=ps.executeUpdate();
+            System.out.println(rows);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_BuyBtnActionPerformed
 
     private void PortfolioBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PortfolioBtn3ActionPerformed
         HomePage homepage = new HomePage(id,name, email, balance);
+        homepage.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_PortfolioBtn3ActionPerformed
 
     private void StocksBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StocksBtn3ActionPerformed
