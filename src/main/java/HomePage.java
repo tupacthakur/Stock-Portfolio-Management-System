@@ -10,6 +10,9 @@
  */
 
 import java.sql.*;
+
+
+import javax.swing.table.DefaultTableModel;
 public class HomePage extends javax.swing.JFrame {
 
     /**
@@ -22,15 +25,61 @@ public class HomePage extends javax.swing.JFrame {
  
      int id;
      
-    public HomePage() {
+     public HomePage() {
         initComponents();
-        con=DB.mycon();
+        con = DB.mycon();
+        populatePortfolioTable();
     }
+
     public HomePage(int id) {
         initComponents();
-        con=DB.mycon();
-        this.id=id;
-        useridDisplay.setText("User ID: "+String.valueOf(id));
+        con = DB.mycon();
+        this.id = id;
+        useridDisplay.setText("User ID: " + String.valueOf(id));
+        populatePortfolioTable();
+    }
+
+    private void populatePortfolioTable() {
+        try {
+            // SQL query to retrieve data from the portfolio table for the specified user id
+            String query = "SELECT stockid as StockID, stockname as StockName, stockprice as Price FROM portfolio WHERE userid = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+
+            // Create a DefaultTableModel to hold the data from the ResultSet
+            DefaultTableModel model = new DefaultTableModel();
+            PortfolioTable.setModel(model);
+
+            // Get metadata about the ResultSet (column names, column count)
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+
+            // Add column names to the table model
+            for (int i = 1; i <= columnCount; i++) {
+                model.addColumn(metaData.getColumnName(i));
+            }
+
+            // Add rows to the table model
+            while (rs.next()) {
+                Object[] row = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    row[i - 1] = rs.getObject(i);
+                }
+                model.addRow(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle any SQL exceptions here
+        } finally {
+            // Close the ResultSet, PreparedStatement, and Connection
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -57,7 +106,7 @@ public class HomePage extends javax.swing.JFrame {
         StocksBtn = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        PortfolioTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -84,6 +133,7 @@ public class HomePage extends javax.swing.JFrame {
 
         useridDisplay.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         useridDisplay.setForeground(new java.awt.Color(16, 48, 144));
+        useridDisplay.setText("User ID");
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(16, 48, 144));
@@ -163,7 +213,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PortfolioTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -174,7 +224,7 @@ public class HomePage extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(PortfolioTable);
 
         jPanel3.setBackground(new java.awt.Color(193, 219, 249));
 
@@ -299,6 +349,8 @@ public class HomePage extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -327,12 +379,14 @@ public class HomePage extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HomePage().setVisible(true);
+                //homePage.populatePortfolioTable();
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton PortfolioBtn;
+    private javax.swing.JTable PortfolioTable;
     private javax.swing.JButton SellBtn;
     private javax.swing.JButton StocksBtn;
     private javax.swing.JButton jButton2;
@@ -351,7 +405,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField stockidfield;
     private javax.swing.JLabel useridDisplay;
     // End of variables declaration//GEN-END:variables
