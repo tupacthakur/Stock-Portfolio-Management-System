@@ -37,7 +37,7 @@ CREATE TABLE Stock (
 
 -- Portfolio table
 CREATE TABLE Portfolio (
-    PortfolioID INT PRIMARY KEY,
+    PortfolioID INT auto_increment KEY,
     UserID INT,
     DematID INT,
     StockID INT,
