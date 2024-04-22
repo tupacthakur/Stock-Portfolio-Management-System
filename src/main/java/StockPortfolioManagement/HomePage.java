@@ -15,7 +15,7 @@ import java.sql.*;
 
 
 import javax.swing.table.DefaultTableModel;
-public class HomePage extends javax.swing.JFrame {
+public class HomePage extends javax.swing.JFrame implements StockPortfolioInterface{
 
     /**
      * Creates new form HomePage
@@ -33,6 +33,10 @@ public class HomePage extends javax.swing.JFrame {
      public HomePage() {
         initComponents();
         con = DB.mycon();
+        updatePortfolio();
+    }
+    public void updatePortfolio()
+    {
         populatePortfolioTable();
     }
 

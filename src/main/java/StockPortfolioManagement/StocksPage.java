@@ -13,7 +13,7 @@ import java.sql.*;
 
 
 import javax.swing.table.DefaultTableModel;
-public class StocksPage extends javax.swing.JFrame {
+public class StocksPage extends javax.swing.JFrame implements StockPortfolioInterface {
 
     /**
      * Creates new form StocksPage
@@ -33,6 +33,10 @@ public class StocksPage extends javax.swing.JFrame {
     public StocksPage() {
         initComponents();
         con = DB.mycon();
+        updateStocks();
+    }
+    public void updateStocks()
+    {
         populateStockTable();
     }
 
