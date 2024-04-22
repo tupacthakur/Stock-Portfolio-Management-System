@@ -260,7 +260,7 @@ public class SignUp extends javax.swing.JFrame {
             System.out.println(e);
         }
 
-        CreateDemat createdemat = new CreateDemat();
+        CreateDemat createdemat = new CreateDemat(id);
         createdemat.setVisible(true);
         setVisible(false);
 

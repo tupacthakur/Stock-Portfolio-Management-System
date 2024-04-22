@@ -20,9 +20,17 @@ public class CreateDemat extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement ps = null;
 
+    int id;
+
     public CreateDemat() {
         initComponents();
         con=DB.mycon();
+    }
+
+    public CreateDemat(int id) {
+        initComponents();
+        con=DB.mycon();
+        this.id=id;
     }
 
     /**
@@ -213,7 +221,6 @@ public class CreateDemat extends javax.swing.JFrame {
         String dematid = dematidfield.getText();
         String panid = panidfield.getText();
         int balance = Integer.parseInt(balancefield.getText());
-        int id=4;
 
         try {
             String query="insert into demataccount values (?,?,?,?)";
