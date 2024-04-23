@@ -33,9 +33,9 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
      public HomePage() {
         initComponents();
         con = DB.mycon();
-        updatePortfolio();
+        UpdateTable();
     }
-    public void updatePortfolio()
+    public void UpdateTable()
     {
         populatePortfolioTable();
     }

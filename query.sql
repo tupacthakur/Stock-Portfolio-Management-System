@@ -74,5 +74,24 @@ INSERT INTO Portfolio (PortfolioID, UserID, DematID, StockID, StockName, StockPr
 (1, 1, 123456789, 1, 'AAPL', 150),
 (2, 2, 987654321, 3, 'MSFT', 300);
 
+INSERT INTO Stock (StockID, StockName, StockPrice, ChangePercentage) VALUES
+(4, 'AMZN', 3500, 1.5),
+(5, 'TSLA', 750, 3),
+(6, 'NFLX', 600, -0.5),
+(7, 'FB', 340, 1.2),
+(8, 'NVDA', 700, 2.5);
+
+INSERT INTO Stock (StockID, StockName, StockPrice, ChangePercentage) VALUES
+(9, 'Microsoft Corporation', 305, 1.8),
+(10, 'Alphabet Inc.', 2900, -0.7),
+(11, 'Tesla, Inc.', 760, 2.3),
+(12, 'Amazon.com, Inc.', 3550, 0.9),
+(13, 'Meta Platforms, Inc.', 345, -1.5),
+(14, 'Netflix, Inc.', 610, 0.2),
+(15, 'NVIDIA Corporation', 720, -0.3),
+(16, 'The Walt Disney Company', 150, 0.8),
+(17, 'JPMorgan Chase & Co.', 140, -0.2),
+(18, 'Johnson & Johnson', 170, 1.1);
+
 
 

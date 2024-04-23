@@ -33,9 +33,9 @@ public class StocksPage extends javax.swing.JFrame implements StockPortfolioInte
     public StocksPage() {
         initComponents();
         con = DB.mycon();
-        updateStocks();
+        UpdateTable();
     }
-    public void updateStocks()
+    public void UpdateTable()
     {
         populateStockTable();
     }
@@ -377,6 +377,19 @@ public class StocksPage extends javax.swing.JFrame implements StockPortfolioInte
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        try {
+            String query4="update demataccount set balance=balance-? where userid=?";
+            ps=con.prepareStatement(query4);
+            ps.setInt(1, stockprice);
+            ps.setInt(2, id);
+            int rows2= ps.executeUpdate();
+            System.out.println(rows2);
+            balance-=stockprice;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        balancedisplay3.setText(String.valueOf(balance));
     }//GEN-LAST:event_BuyBtnActionPerformed
 
     private void PortfolioBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PortfolioBtn3ActionPerformed
