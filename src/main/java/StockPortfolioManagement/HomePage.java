@@ -122,6 +122,11 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         jLabel8 = new javax.swing.JLabel();
         stockidfield = new javax.swing.JTextField();
         SellBtn = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        BalanceField = new javax.swing.JTextField();
+        SellBtn1 = new javax.swing.JButton();
+        AddBalanceBtn = new javax.swing.JButton();
 
         jLabel4.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
         jLabel4.setText("Account Balance:");
@@ -272,16 +277,16 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(stockidfield, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(SellBtn)
-                        .addGap(106, 106, 106))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))))
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(SellBtn)
+                        .addGap(112, 112, 112))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,9 +297,74 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(stockidfield))
-                .addGap(37, 37, 37)
+                .addGap(33, 33, 33)
                 .addComponent(SellBtn)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(193, 219, 249));
+
+        jLabel11.setFont(new java.awt.Font("Agency FB", 1, 48)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(16, 48, 144));
+        jLabel11.setText("Add Balance");
+
+        BalanceField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BalanceFieldActionPerformed(evt);
+            }
+        });
+
+        SellBtn1.setBackground(new java.awt.Color(16, 48, 144));
+        SellBtn1.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        SellBtn1.setForeground(new java.awt.Color(255, 255, 255));
+        SellBtn1.setText("SELL");
+        SellBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SellBtn1ActionPerformed(evt);
+            }
+        });
+
+        AddBalanceBtn.setBackground(new java.awt.Color(16, 48, 144));
+        AddBalanceBtn.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        AddBalanceBtn.setForeground(new java.awt.Color(255, 255, 255));
+        AddBalanceBtn.setText("ADD");
+        AddBalanceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddBalanceBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(SellBtn1)
+                        .addGap(106, 106, 106))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(BalanceField, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(AddBalanceBtn)
+                        .addGap(71, 71, 71))))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BalanceField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AddBalanceBtn)
+                .addGap(51, 51, 51)
+                .addComponent(SellBtn1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -304,10 +374,16 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(92, 92, 92)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1024, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -319,12 +395,12 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
                         .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(82, 82, 82)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(124, 124, 124)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGap(58, 58, 58)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
@@ -352,6 +428,35 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         stockspage.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_StocksBtnActionPerformed
+
+    private void AddBalanceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBalanceBtnActionPerformed
+        int balancetobeadded=Integer.parseInt(BalanceField.getText());
+        try {
+            String query3="update demataccount set balance=balance+? where userid=?";
+            ps=con.prepareStatement(query3);
+            ps.setInt(1, balancetobeadded);
+            ps.setInt(2, id);
+            int rows3= ps.executeUpdate();
+            System.out.println(rows3);
+            balance+=balancetobeadded;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        balancedisplay.setText("Balance: "+String.valueOf(balance));
+
+    }//GEN-LAST:event_AddBalanceBtnActionPerformed
+
+    private void stockidfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockidfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stockidfieldActionPerformed
+
+    private void BalanceFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BalanceFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BalanceFieldActionPerformed
+
+    private void SellBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SellBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SellBtn1ActionPerformed
 
     private void SellBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SellBtnActionPerformed
         int stockid=Integer.parseInt(stockidfield.getText());
@@ -404,10 +509,6 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         
     }//GEN-LAST:event_SellBtnActionPerformed
 
-    private void stockidfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockidfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stockidfieldActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -446,16 +547,20 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddBalanceBtn;
+    private javax.swing.JTextField BalanceField;
     private javax.swing.JLabel Namedisplay;
     private javax.swing.JButton PortfolioBtn;
     private javax.swing.JTable PortfolioTable;
     private javax.swing.JButton SellBtn;
+    private javax.swing.JButton SellBtn1;
     private javax.swing.JButton StocksBtn;
     private javax.swing.JLabel balancedisplay;
     private javax.swing.JLabel emaildisplay;
     private javax.swing.JButton jButton2;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -464,6 +569,7 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField stockidfield;
