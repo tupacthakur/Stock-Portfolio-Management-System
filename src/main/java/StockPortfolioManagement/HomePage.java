@@ -29,6 +29,7 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
      String name;
      String email;
      int balance;
+     int stockprice;
 
      public HomePage() {
         initComponents();
@@ -132,7 +133,6 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         jLabel9.setText("jLabel9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1024, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1024, 768));
 
@@ -194,13 +194,13 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(emaildisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Namedisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(balancedisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addComponent(Namedisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(balancedisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(emaildisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(useridDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(146, 146, 146))
         );
@@ -308,7 +308,7 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1024, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,7 +365,42 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        try {
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         populatePortfolioTable();
+
+        try {
+            String query2="select stockprice from stock where stockid=?";
+            ps=con.prepareStatement(query2);
+            ps.setInt(1, stockid);
+            rs=ps.executeQuery();
+            if(rs.next())
+            {
+                stockprice=rs.getInt(1);
+            }
+            else
+            {
+                System.out.println("not found");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            String query1="update demataccount set balance=balance+? where userid=?";
+            ps=con.prepareStatement(query1);
+            ps.setInt(1, stockprice);
+            ps.setInt(2, id);
+            int rows2= ps.executeUpdate();
+            System.out.println(rows2);
+            balance+=stockprice;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        balancedisplay.setText("Balance: "+String.valueOf(balance));
         
     }//GEN-LAST:event_SellBtnActionPerformed
 

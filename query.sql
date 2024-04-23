@@ -94,4 +94,4 @@ INSERT INTO Stock (StockID, StockName, StockPrice, ChangePercentage) VALUES
 (18, 'Johnson & Johnson', 170, 1.1);
 
 
-
+update demataccount set balance=8000 where userid=1;

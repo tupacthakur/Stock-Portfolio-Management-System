@@ -292,7 +292,7 @@ public class SignIn extends javax.swing.JFrame {
             wrong.setVisible(true);
         }
 
-    }//GEN-LAST:event_signinbuttonActionPerformed
+    }
 
     /**
      * @param args the command line arguments
