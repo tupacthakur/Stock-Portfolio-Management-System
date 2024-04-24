@@ -149,8 +149,8 @@
                               <Component id="balancedisplay" min="-2" pref="143" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="emaildisplay" min="-2" pref="228" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="emaildisplay" min="-2" pref="216" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="useridDisplay" min="-2" pref="91" max="-2" attributes="0"/>
                           </Group>
                       </Group>

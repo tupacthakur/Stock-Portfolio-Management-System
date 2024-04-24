@@ -219,7 +219,7 @@
                               <Component id="balancedisplay3" min="-2" pref="122" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="emaildisplay3" min="-2" pref="226" max="-2" attributes="0"/>
+                              <Component id="emaildisplay3" min="-2" pref="220" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="useridDisplay3" min="-2" pref="91" max="-2" attributes="0"/>
                           </Group>

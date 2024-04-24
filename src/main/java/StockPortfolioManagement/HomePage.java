@@ -34,19 +34,16 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
      public HomePage() {
         initComponents();
         con = DB.mycon();
-        UpdateTable();
+        PopulateTable();
     }
-    public void UpdateTable()
-    {
-        populatePortfolioTable();
-    }
+  
 
     public HomePage(int id, String name, String email, int balance) {
         initComponents();
         con = DB.mycon();
         this.id = id;
         useridDisplay.setText("User ID: " + String.valueOf(id));
-        populatePortfolioTable();
+        PopulateTable();
         this.name=name;
         Namedisplay.setText("Name: "+name);
         this.email=email;
@@ -55,7 +52,7 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         balancedisplay.setText("Balance: "+String.valueOf(balance));
     }
 
-    private void populatePortfolioTable() {
+    public void PopulateTable() {
         try {
             String query = "SELECT stockid as StockID, stockname as StockName, stockprice as Price FROM portfolio WHERE userid = ?";
             ps = con.prepareStatement(query);
@@ -204,8 +201,8 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(balancedisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(emaildisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(emaildisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(useridDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(146, 146, 146))
         );
@@ -430,19 +427,32 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
     }//GEN-LAST:event_StocksBtnActionPerformed
 
     private void AddBalanceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBalanceBtnActionPerformed
-        int balancetobeadded=Integer.parseInt(BalanceField.getText());
+        int balancetobeadded=0; 
+        boolean error=false;
+
         try {
-            String query3="update demataccount set balance=balance+? where userid=?";
-            ps=con.prepareStatement(query3);
-            ps.setInt(1, balancetobeadded);
-            ps.setInt(2, id);
-            int rows3= ps.executeUpdate();
-            System.out.println(rows3);
-            balance+=balancetobeadded;
-        } catch (Exception e) {
-            System.out.println(e);
+            balancetobeadded=Integer.parseInt(BalanceField.getText());
+        } catch (NumberFormatException e) {
+            error = true;
+            Amounterror ae = new Amounterror();
+            ae.setVisible(true);
         }
-        balancedisplay.setText("Balance: "+String.valueOf(balance));
+        if(error==false)
+        {
+            try {
+                String query3="update demataccount set balance=balance+? where userid=?";
+                ps=con.prepareStatement(query3);
+                ps.setInt(1, balancetobeadded);
+                ps.setInt(2, id);
+                int rows3= ps.executeUpdate();
+                System.out.println(rows3);
+                balance+=balancetobeadded;
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            balancedisplay.setText("Balance: "+String.valueOf(balance));
+        }
+        
 
     }//GEN-LAST:event_AddBalanceBtnActionPerformed
 
@@ -459,8 +469,19 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
     }//GEN-LAST:event_SellBtn1ActionPerformed
 
     private void SellBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SellBtnActionPerformed
-        int stockid=Integer.parseInt(stockidfield.getText());
+        int stockid=0;
+        boolean error = false;
         try {
+            stockid=Integer.parseInt(stockidfield.getText());
+        } catch (NumberFormatException e) {
+            error=true;
+            Stockiderror se = new Stockiderror();
+            se.setVisible(true);
+        }
+
+        if(error==false)
+        {
+            try {
             String query="delete from portfolio where userid=? and stockid=?";
             ps=con.prepareStatement(query);
             ps.setInt(1, id);
@@ -476,7 +497,7 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         } catch (Exception e) {
             System.out.println(e);
         }
-        populatePortfolioTable();
+        PopulateTable();
 
         try {
             String query2="select stockprice from stock where stockid=?";
@@ -506,6 +527,9 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
             System.out.println(e);
         }
         balancedisplay.setText("Balance: "+String.valueOf(balance));
+        
+        }
+        
         
     }//GEN-LAST:event_SellBtnActionPerformed
 

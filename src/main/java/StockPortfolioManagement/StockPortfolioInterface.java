@@ -1,5 +1,5 @@
 package StockPortfolioManagement;
 
 public interface StockPortfolioInterface {
-    void UpdateTable();
+    void PopulateTable();
 }
