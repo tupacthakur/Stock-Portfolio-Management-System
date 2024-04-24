@@ -220,6 +220,7 @@ public class StocksPage extends javax.swing.JFrame implements StockPortfolioInte
 
         PortfolioBtn3.setBackground(new java.awt.Color(193, 219, 249));
         PortfolioBtn3.setFont(new java.awt.Font("Agency FB", 1, 48)); // NOI18N
+        PortfolioBtn3.setForeground(new java.awt.Color(16, 48, 144));
         PortfolioBtn3.setText("Portfolio");
         PortfolioBtn3.setBorder(null);
         PortfolioBtn3.setBorderPainted(false);
