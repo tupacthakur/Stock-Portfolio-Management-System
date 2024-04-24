@@ -162,6 +162,9 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         PortfolioBtn.setFont(new java.awt.Font("Agency FB", 1, 48)); // NOI18N
         PortfolioBtn.setText("Portfolio");
         PortfolioBtn.setBorder(null);
+        PortfolioBtn.setBorderPainted(false);
+        PortfolioBtn.setFocusPainted(false);
+        PortfolioBtn.setFocusable(false);
         PortfolioBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PortfolioBtnActionPerformed(evt);
@@ -173,6 +176,9 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         StocksBtn.setForeground(new java.awt.Color(16, 48, 144));
         StocksBtn.setText("Stocks");
         StocksBtn.setBorder(null);
+        StocksBtn.setBorderPainted(false);
+        StocksBtn.setFocusPainted(false);
+        StocksBtn.setFocusable(false);
         StocksBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StocksBtnActionPerformed(evt);
@@ -259,6 +265,8 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         SellBtn.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         SellBtn.setForeground(new java.awt.Color(255, 255, 255));
         SellBtn.setText("SELL");
+        SellBtn.setFocusPainted(false);
+        SellBtn.setFocusable(false);
         SellBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SellBtnActionPerformed(evt);
@@ -325,6 +333,8 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         AddBalanceBtn.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         AddBalanceBtn.setForeground(new java.awt.Color(255, 255, 255));
         AddBalanceBtn.setText("ADD");
+        AddBalanceBtn.setFocusPainted(false);
+        AddBalanceBtn.setFocusable(false);
         AddBalanceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddBalanceBtnActionPerformed(evt);
