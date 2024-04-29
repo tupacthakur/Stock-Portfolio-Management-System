@@ -363,7 +363,7 @@ public class StocksPage extends javax.swing.JFrame implements StockPortfolioInte
                 }
 
                 try {
-                    String query2 = "select stockname, stockprice from stock where stockid=?";
+                    String query2 = "select name, CurrentPrice from stock where stockid=?";
                     ps = con.prepareStatement(query2);
                     ps.setInt(1, stockid);
                     rs = ps.executeQuery();
@@ -379,7 +379,7 @@ public class StocksPage extends javax.swing.JFrame implements StockPortfolioInte
             }
 
             try {
-                String query3 = "insert into portfolio (userid, dematid, stockid, stockname, stockprice) values (?,?,?,?,?)";
+                String query3 = "insert into portfolio_user (userid, dematid, stockid, stockname, stockprice) values (?,?,?,?,?)";
                 ps = con.prepareStatement(query3);
                 ps.setInt(1, id);
                 ps.setInt(2, dematid);

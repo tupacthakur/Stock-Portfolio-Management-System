@@ -18,7 +18,7 @@ public class DB {
         Connection con=null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/stockportfoliomanagement","root","Jhala@27");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_portfolio_management","root","Jhala@27");
             System.out.println("connected");
         } catch (Exception e) {
             System.out.println(e);

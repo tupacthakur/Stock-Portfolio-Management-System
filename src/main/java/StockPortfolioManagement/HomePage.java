@@ -54,7 +54,7 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
 
     public void PopulateTable() {
         try {
-            String query = "SELECT stockid as StockID, stockname as StockName, stockprice as Price FROM portfolio WHERE userid = ?";
+            String query = "SELECT stockid as StockID, stockname as StockName, stockprice as Price FROM portfolio_user WHERE userid = ?";
             ps = con.prepareStatement(query);
             ps.setInt(1, id);
             rs = ps.executeQuery();
@@ -492,7 +492,7 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         if(error==false)
         {
             try {
-            String query="delete from portfolio where userid=? and stockid=?";
+            String query="delete from portfolio_user where userid=? and stockid=?";
             ps=con.prepareStatement(query);
             ps.setInt(1, id);
             ps.setInt(2,stockid);
@@ -510,7 +510,7 @@ public class HomePage extends javax.swing.JFrame implements StockPortfolioInterf
         PopulateTable();
 
         try {
-            String query2="select stockprice from stock where stockid=?";
+            String query2="select CurrentPrice from stock where stockid=?";
             ps=con.prepareStatement(query2);
             ps.setInt(1, stockid);
             rs=ps.executeQuery();
