@@ -16,7 +16,7 @@ It enables users to buy, sell stocks and view their Portfolio.
 Clone the project
 
 ```bash
-  git clone https://github.com/UdayrajJhala/E-Notice-Board-Web-App
+  git clone https://github.com/UdayrajJhala/Stock-Portfolio-Management-System
 ```
 
 Go to the project directory
