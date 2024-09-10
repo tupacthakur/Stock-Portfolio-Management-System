@@ -3,7 +3,7 @@
 
 A Stock Portfolio Management application made using netbeans GUI builder, java and JDBC. 
 
-It enables users to buy, sell stocks and view their Portfolio.
+It enables users to buy, sell stocks and view their portfolio.
 
   
 
